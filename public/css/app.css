@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
+:root {
+    --color-background-light: #f7f6f6;
+    --color-text-light: #000000;
+    --color-background-dark: #000000;
+    --color-text-dark: #ffffff;
+    --color-icon-light: #000000;
+    /* Color del icono en el tema claro */
+    --color-icon-dark: #fff;
+    /* Estilos del botón en el modo claro */
+    --boton-fondo-claro: #07be17;
+    --boton-texto-claro: #000000;
+    /* Estilos del botón en el modo oscuro */
+    --boton-fondo-oscuro: #09afaf;
+    --boton-texto-oscuro: #000000;
+    --primary-color: #695CFE;
+
+
+    --color-navbar-claro: blue;
+    --color-navbar-oscuro: purple;
+
+    /* Agrega más variables globales según sea necesario */
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+/* Estilos para el tema claro */
+body.theme-light {
+    background-color: var(--color-background-light);
+    color: var(--color-text-light);
+}
+
+/* Estilos para el tema oscuro */
+body.theme-dark {
+    background-color: var(--color-background-dark);
+    color: var(--color-text-dark);
+}
+
+/*MENU ADMINISTRADOR---------------------------------------------------*/
+
+body.theme-dark .navbar {
+    background-color: rgb(36, 32, 36);
+    /* Cambiar el color del navbar a morado en modo oscuro */
+}
+
+/* Estilos adicionales para el modo claro */
+body.theme-light .navbar {
+    background-color: rgb(162, 163, 211);
+    /* Cambiar el color del navbar a verde en modo claro */
+}
+
+/*COLORS DE MODAL*/
+
+/* Estilos adicionales para el modo claro */
+body.theme-light .modal-fondo {
+    background: rgba(0, 0, 0, 0.7);
+    /* Cambiar el color del navbar a verde en modo claro */
+    color: var(--color-text-light);
+}
+
+body.theme-dark .modal-fondo {
+    background: rgba(0, 0, 0, 0.5);
+    /* Cambiar el color del navbar a morado en modo oscuro */
+}
+
+body.theme-light .modal-content {
+    background-color: #ffffff;
+    /* Cambiar el color del navbar a verde en modo claro */
+    color: var(--color-text-light);
+}
+
+body.theme-dark .modal-content {
+    background-color: #272626;
+    color: #f7f6f6;
+}
+
+/*DISEÑO GENERALES DE DARDS*/
+body.theme-light .card-uno {
+    background: linear-gradient(135deg, #a9d4a5, #beb595);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.849), 0 0 20px rgba(0, 0, 0, 0.459);
+
+}
+
+body.theme-dark .card-uno {
+    background-color: #000000;
+    box-shadow: 5px 5px 5px rgba(119, 116, 116, 0.849), 0 0 20px rgba(129, 128, 128, 0.459);
+    /* Sombra adicional para efecto 3D */
+
+
+}
+
+body.theme-light .card-uno:hover {
+   /* transform: scale(1.05);*/
+    background-color: #464343;
+    /* Cambiamos el color de fondo al hacer hover */
+
+}
+
+body.theme-dark .card-uno:hover {
+    /*transform: scale(1.05);*/
+    background-color: #161616;
+
+}
+
+/*DISEÑO DE INPUT*/
+
+body.theme-light input {
+    background-color: #ffffff;
+    /* Cambiar el color del navbar a verde en modo claro */
+    color: var(--color-text-light);
+}
+
+body.theme-dark input {
+    background-color: #272626;
+    color: #f7f6f6;
+}
+
+/*DISEÑO DEL WELCOME*/
+body.theme-light nav {
+    background-color: rgb(128, 128, 206);
+
+    .nav-list {
+        background-color: rgb(128, 128, 206);
+    }
+}
+
+body.theme-dark nav {
+    background-color: #272626;
+
+    .nav-list {
+        background-color: #272626;
+    }
+}
+/*___________________________________________________________*/
+body.theme-light input {
+    background-color: rgb(255, 255, 255);
+}
+
+body.theme-dark input {
+    background-color: #272626;
+}
