@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Prensa;
+use App\Models\Logo;
+use App\Models\Footer;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
@@ -17,6 +20,9 @@ class DemografiaController extends Controller
     {
         return Inertia::render("Welcome/Demografia/Index",[
             'prensas' => Prensa::all(),
+            'logos'=>Logo::all(),
+            'footers'=>Footer::all(),
+
 
         ]);
     }

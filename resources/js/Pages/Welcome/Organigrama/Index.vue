@@ -1,35 +1,45 @@
 <script setup>
 import LayoutWelcome from "@/Layouts/LayoutWelcome.vue";
+import FooterWelcome from "@/Pages/Welcome/Components/FooterWelcome.vue";
+
+const { logos, footers } = defineProps(["logos", "footers"]);
+const organigrama = "/imagenes/organigrama.jpg";
 </script>
 
 <template>
-  <LayoutWelcome>
-    <div>
-      <h1 class="title">ORGANIGRAMA</h1>
-      <div class="organigrama-content">
-        <div class="organigrama">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png"
-            alt=""
-          />
+  <div v-if="logos.length > 0">
+    <LayoutWelcome :logo="logos[logos.length - 1]">
+      <div>
+        <h1 class="title">ORGANIGRAMA</h1>
+        <div class="organigrama-content">
+          <div class="organigrama">
+            <div class="link-uno">
+              <img :src="organigrama  " alt="MINDIS" />
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </LayoutWelcome>
+      <footer>
+        <div v-if="footers.length > 0">
+          <FooterWelcome :footer="footers[footers.length - 1]" />
+        </div>
+      </footer>
+    </LayoutWelcome>
+  </div>
 </template>
 
 <style scoped>
 .title {
-    font-size: 30px;
-    text-align: center;
-    background: linear-gradient(
-      to right,
-      rgba(128, 120, 120, 0.5),
-      rgba(117, 59, 59, 0.5)
-    ); /* Degradado de color */
-    padding: 20px;
-    margin: 10px 0;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-size: 30px;
+  text-align: center;
+  background: linear-gradient(
+    to right,
+    rgba(28, 187, 166, 0.986),
+    rgba(185, 185, 185, 0.5)
+  ); /* Degradado de color */
+  padding: 20px;
+  margin: 10px 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .organigrama-content {

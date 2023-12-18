@@ -15,6 +15,7 @@
               class="rounded-lg w-full p-2.5 dark:focus:ring-blue-500 bg-transparent"
               placeholder="Título de la actividad"
             />
+            <br>
             <span v-if="form.errors.title_prensa" class="text-red-500">{{
               form.errors.title_prensa
             }}</span>
@@ -26,6 +27,7 @@
               class="rounded-lg w-full p-4 bg-transparent dark:focus:ring-blue-500"
               placeholder="Contenido de la actividad"
             ></textarea>
+            <br>
             <span v-if="form.errors.content_prensa" class="text-red-500">{{
               form.errors.content_prensa
             }}</span>
@@ -39,6 +41,7 @@
               id="image_prensa"
               accept="image/*"
             />
+            <br>
             <span v-if="form.errors.image_prensa" class="text-red-500">{{
               form.errors.image_prensa
             }}</span>
@@ -53,10 +56,6 @@
             </button>
           </div>
         </form>
-
-        <div v-if="form.errors.title_prensa" class="error-dialogue">
-          {{ form.errors.title_prensa }}
-        </div>
       </div>
     </div>
   </div>

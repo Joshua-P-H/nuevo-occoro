@@ -9,16 +9,46 @@ defineProps({
 
 <template>
     <div>
-        <button v-if="as == 'button'" type="submit" class="block w-full px-4 py-2 text-start text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">
+        <button v-if="as == 'button'" type="submit" class="my-button">
             <slot />
         </button>
 
-        <a v-else-if="as =='a'" :href="href" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">
+        <a v-else-if="as =='a'" :href="href" class="my-link">
             <slot />
         </a>
 
-        <Link v-else :href="href" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">
+        <Link v-else :href="href" class="my-link">
             <slot />
         </Link>
     </div>
 </template>
+
+<style scoped>
+.my-button,
+.my-link {
+    display: block;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: #ffffff;
+    background-color: #000000;
+    border-radius: 0.375rem;
+    transition: background-color 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.my-button:hover,
+.my-link:hover {
+    background-color: #0472e0;
+}
+
+.my-button:focus,
+.my-link:focus {
+    outline: none;
+    background-color: #edf2f7;
+}
+
+.my-button:focus-visible,
+.my-link:focus-visible {
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+}
+</style>

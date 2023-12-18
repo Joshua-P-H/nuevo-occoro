@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Prensa;
+use App\Models\Logo;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
@@ -10,13 +12,13 @@ use Inertia\Inertia;
 
 class PrensaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         return Inertia::render("Administrador/Prensa/Index",[
             'prensas' => Prensa::all(),
+            'logos' => Logo::all(),
+
 
         ]);
     }
@@ -48,6 +50,7 @@ class PrensaController extends Controller
             'title_prensa' => $request->input('title_prensa'),
             'content_prensa' => $request->input('content_prensa'),
             'image_prensa' => 'imagesprensa/' . $imageName, // Guarda en la base de datos el nombre del archivo
+
         ]);
     
         return redirect()->route('prensas.index');
@@ -59,15 +62,17 @@ class PrensaController extends Controller
     public function show($id)
     {
         $prensa = Prensa::find($id);
-
-        // Asegúrate de que la variable $prensa no sea nula antes de acceder a sus propiedades
         if ($prensa) {
             $imagenUrl = url('imagesprensa/' . $prensa->imagen); // Construye la URL completa
         } else {
             $imagenUrl = null;
         }
-
-        return Inertia::render('Show', ['prensa' => $prensa, 'imagenUrl' => $imagenUrl]);
+        $logos = Logo::all();
+        return Inertia::render('Show', [
+            'prensa' => $prensa,
+            'imagenUrl' => $imagenUrl,
+            'logos' => $logos,
+        ]);
     }
 
     /**

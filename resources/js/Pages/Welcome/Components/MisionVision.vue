@@ -6,10 +6,7 @@
         <h2 class="title-mision">Misión</h2>
         <div class="content-mision">
           <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui
-            deleniti vel ratione, numquam ipsam eos reiciendis! Aliquam,
-            voluptates, repudiandae incidunt nulla neque voluptatum, esse vel
-            earum aliquid iusto dignissimos at.
+            {{ mision.mision }}
           </p>
         </div>
       </div>
@@ -17,16 +14,17 @@
         <h2 class="title-vision">Visión</h2>
         <div class="content-vision">
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti,
-            eveniet quibusdam? Libero illo sed sequi harum aliquid? Nisi iste,
-            voluptatibus maiores consequuntur odio magni et odit voluptas
-            explicabo. Autem, cumque?
+            {{ mision.vision }}
           </p>
         </div>
       </div>
     </div>
   </div>
 </template>
+<script setup>
+const props = defineProps(["mision"]);
+
+</script>
 
 <style scoped>
 h1 {
@@ -34,8 +32,8 @@ h1 {
   text-align: center;
   background: linear-gradient(
     to right,
-    rgba(128, 120, 120, 0.5),
-    rgba(117, 59, 59, 0.5)
+    rgba(28, 187, 166, 0.986),
+    rgba(185, 185, 185, 0.5)
   ); /* Degradado de color */
   padding: 20px;
   margin: 10px 0;
@@ -78,7 +76,6 @@ h1 {
 /* Estilos adicionales para mejorar la apariencia */
 .mision,
 .vision {
-  border: 1px solid #ccc;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }

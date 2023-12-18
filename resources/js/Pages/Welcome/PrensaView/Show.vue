@@ -1,28 +1,28 @@
 <template>
-  <LayoutWelcome>
-    <div v-if="prensa">
-      <div class="prensa">
-        <div class="title">
-          <h1 class="custom-title">{{ prensa.title_prensa }}</h1>
-        </div>
-        <div class="content-wrapper">
-          <div class="img-content">
-            <img :src="'../' + prensa.image_prensa" class="img-responsive" />
-            <div class="content-data-noticia">
-              <div class="column date">{{ formatDate(prensa.created_at) }}</div>
-              <div class="column noticia">
-                <Link href="/noticias" class="noticia-link">Noticia</Link>
+      <div v-if="prensa">
+        <div class="prensa">
+          <div class="title">
+            <h1 class="custom-title">{{ prensa.title_prensa }}</h1>
+          </div>
+          <div class="content-wrapper">
+            <div class="img-content">
+              <img :src="'../' + prensa.image_prensa" class="img-responsive" />
+              <div class="content-data-noticia">
+                <div class="column date">
+                  {{ formatDate(prensa.created_at) }}
+                </div>
+                <div class="column noticia">
+                  <Link href="/noticias" class="noticia-link">Noticia</Link>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="prensa-content">
-            <p>{{ prensa.content_prensa }}</p>
+            <div class="prensa-content">
+              <p>{{ prensa.content_prensa }}</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </LayoutWelcome>
 </template>
 
 <style scoped>
@@ -99,13 +99,17 @@
 
 <script setup>
 import LayoutWelcome from "@/Layouts/LayoutWelcome.vue";
+
 import { Link } from "@inertiajs/vue3";
 
 const props = defineProps({
   prensa: Object,
 });
 const formatDate = (date) => {
-  const formattedDate = new Date(date).toLocaleDateString('es-ES', { month: 'long', day: '2-digit' });
-  return formattedDate.replace(/^(\d)$/, '0$1');
+  const formattedDate = new Date(date).toLocaleDateString("es-ES", {
+    month: "long",
+    day: "2-digit",
+  });
+  return formattedDate.replace(/^(\d)$/, "0$1");
 };
 </script>

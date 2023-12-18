@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\ConvocatoriaFecha;
 use App\Models\Convocatoria;
+use App\Models\Logo;
+use App\Models\Footer;
+
 
 
 
@@ -50,7 +53,6 @@ public function viewconvocatoria()
         ->latest()
         ->orderByDesc('created_at')
         ->get();
-
     // Organizar las convocatorias por fecha y título
     $groupedConvocatorias = $listas->groupBy(function ($convocatoria) {
         return [
@@ -58,9 +60,14 @@ public function viewconvocatoria()
             'title' => $convocatoria->convocatoriaFecha->title_convocatoria,
         ];
     });
+   // $logos = Logo::all();
+
 
     return Inertia::render('Welcome/Convocatoria/Index', [
         'listas' => $groupedConvocatorias,
+        'logos' => Logo::all(),
+        'footers'=>Footer::all(),
+
     ]);
 }
 

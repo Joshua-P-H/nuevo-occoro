@@ -38,6 +38,7 @@
       @close="closeEditModal"
       :convocatoria="seleccionarActivida"
     />
+    <h3>En proceso de implementación</h3>
   </Dashboard>
 </template>
 

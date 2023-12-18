@@ -13,14 +13,14 @@
               type="text"
               id="title_prensa"
               class="rounded-lg w-full p-2.5 dark:focus:ring-blue-500 bg-transparent border-b-2 border-blue-500 outline-none"
-              />
+            />
           </div>
           <textarea
-          v-model="prensa.content_prensa"
-          id="content_prensa"
-          type="text"
-          class="rounded-lg w-full p-4 bg-transparent dark:focus:ring-blue-500"
-      ></textarea>
+            v-model="prensa.content_prensa"
+            id="content_prensa"
+            type="text"
+            class="rounded-lg w-full p-4 bg-transparent dark:focus:ring-blue-500"
+          ></textarea>
 
           <div class="my-3">
             <input
@@ -68,9 +68,8 @@ async function submit() {
     formData.append("title_prensa", prensa.title_prensa);
     formData.append("content_prensa", prensa.content_prensa);
 
-
     // Verificar si se ha seleccionado un nuevo archivo de imagen
-    if (prensa.image_actividad) {
+    if (prensa.image_prensa) {
       formData.append("image_prensa", prensa.image_prensa);
     }
 
@@ -94,58 +93,47 @@ function onFileChange(event) {
   prensa.image_prensa =
     event.target.files.length > 0 ? event.target.files[0] : null;
 }
-
 </script>
-
-  
-  
-
-
-
-
-
 
 <style scoped>
 /* Estilos generales para el modal */
 .modal-fondo {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    transition: opacity 0.2s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: opacity 0.2s;
 }
 
 /* Estilos generales para el contenido del modal */
 .modal-content {
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    max-height: 80%;
-    overflow-y: auto;
-    position: relative;
-    /* Asegura que los elementos dentro del modal-content sean posicionados relativamente */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  max-height: 80%;
+  overflow-y: auto;
+  position: relative;
+  /* Asegura que los elementos dentro del modal-content sean posicionados relativamente */
 }
 
 /* Estilos generales para el botón "close" */
 .close-button {
-    position: fixed;
-    top: 10px;
-    /* Posición fija en la parte superior */
-    right: 10px;
-    /* Posición fija en la parte derecha */
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 24px;
-    color: #e40d0d;
+  position: fixed;
+  top: 10px;
+  /* Posición fija en la parte superior */
+  right: 10px;
+  /* Posición fija en la parte derecha */
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: #e40d0d;
 }
 </style>
-
-

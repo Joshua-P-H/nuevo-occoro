@@ -4,6 +4,7 @@ import { Head, Link, router } from "@inertiajs/vue3";
 
 import Modo from "@/Pages/Theme/Modo.vue";
 import FooterWelcome from "@/Pages/Welcome/Components/FooterWelcome.vue";
+const props = defineProps(["logo"]);
 
 const isMenuOpen = ref(false);
 const isSmallScreen = ref(window.innerWidth <= 600);
@@ -38,7 +39,8 @@ onBeforeUnmount(() => {
         <i class="bx bx-menu"></i>
       </button>
       <div class="logo">
-        <img src="http://127.0.0.1:8001/imagesprensa/NUEVO_OCC1.png" alt="" />
+        <img :src="logo.image_logo" alt="" width="100%" :style="{ maxWidth: '80px' }"/>
+
       </div>
       <ul
         class="nav-list"
@@ -51,17 +53,26 @@ onBeforeUnmount(() => {
             >Opciones <i class="bx bx-caret-down"></i
           ></a>
           <ul class="dropdown-content">
-            <li><Link href="/misionvision" class="nav-link">Misión y visión</Link></li>
-            <li><Link href="/organigrama" class="nav-link">Organigrama</Link></li>
+            <li>
+              <Link href="/mision-vision" class="nav-link">Misión y visión</Link>
+            </li>
+            <li>
+              <Link href="/organigrama" class="nav-link">Organigrama</Link>
+            </li>
+            <li><Link href="/info-alcalde" class="nav-link">Alcalde</Link></li>
+
             <li class="dropdown-submenu">
               <a href="#" class="nav-link"
                 >Convocatorias<i class="bx bx-caret-down"></i
               ></a>
               <ul class="dropdown-submenu-content">
-                <li><Link href="/viewsconvocatorias" class="nav-link">Convocatoria-1</Link></li>
+                <li>
+                  <Link href="/viewsconvocatorias" class="nav-link"
+                    >Convocatoria-1</Link
+                  >
+                </li>
               </ul>
             </li>
-            
           </ul>
         </li>
         <li class="dropdown">
@@ -70,20 +81,18 @@ onBeforeUnmount(() => {
           ></a>
           <ul class="dropdown-content">
             <li><Link href="/demografia" class="nav-link">Demografia</Link></li>
-            <li><Link href="/historia" class="nav-link">Reseña hitorica</Link></li>            
+            <li>
+              <Link href="/historia" class="nav-link">Reseña hitorica</Link>
+            </li>
           </ul>
         </li>
-        <li><a href="#" class="nav-link">Otros</a></li>
         <li><Link href="/noticias" class="nav-link">Noticias</Link></li>
-        <li><Link href="/docview" class="nav-link">Otros</Link></li>
+        <li><Link href="/docview" class="nav-link">Documentos</Link></li>
       </ul>
     </nav>
     <div class="content">
       <slot> </slot>
     </div>
-    <footer>
-      <FooterWelcome />
-    </footer>
   </Modo>
 </template>
 
@@ -119,14 +128,13 @@ nav {
   font-size: 30px;
 }
 .logo {
-  max-width: 200px; /* Establece un ancho máximo para el logo */
-  margin-right: 350px; /* Ajusta este valor para establecer el espacio deseado */
+  max-width: 100px; /* Establece un ancho máximo para el logo */
+  margin-right: 150px; /* Ajusta este valor para establecer el espacio deseado */
 }
 .logo img {
-  width: 100%; /* Establece el ancho de la imagen al 100% del contenedor (.logo) */
-  max-width: 180px; /* Establece el ancho máximo para la imagen */
-  height: auto; /* Permite que la altura se ajuste automáticamente según el ancho */
-  display: block; /* Elimina el espacio adicional debajo de la imagen */
+  width: 180px; /* Establece un ancho fijo para la imagen del logo */
+  height: auto;
+  border-radius: 10px;
 }
 
 @media screen and (max-width: 600px) {
@@ -134,9 +142,15 @@ nav {
     max-width: 200px; /* Establece un ancho máximo para el logo */
     margin-right: 40px; /* Ajusta este valor para establecer el espacio deseado */
   }
+  .logo img {
+    width: 120px; /* Establece un ancho fijo para la imagen del logo */
+    max-width: 100%; /* Garantiza que la imagen no exceda el ancho del contenedor (.logo) */
+    height: auto;
+    border-radius: 10px;
+  }
   .nav-list {
     position: absolute;
-    top: 82px;
+    top: 90px;
     left: 0;
     width: 40%;
     height: 100vh;
@@ -205,7 +219,7 @@ nav {
 .dropdown-content {
   visibility: hidden;
   position: absolute;
-  background-color: #070606;
+  background-color: #686d68;
   min-width: 190px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 1;
@@ -227,7 +241,7 @@ nav {
   left: 80%;
   visibility: hidden;
   position: absolute;
-  background-color: #070606;
+  background-color: #7a7272;
   min-width: 190px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 1;
@@ -254,7 +268,7 @@ nav {
 }
 
 .nav-link:hover {
-  background-color: #555;
+  background-color: #0fb3c9;
   border-radius: 10px;
 }
 
@@ -268,7 +282,7 @@ nav {
 
 .content {
   padding-top: 0;
-  margin-top: 82px;
+  margin-top: 92px;
   /*    position: fixed;
 */
 }

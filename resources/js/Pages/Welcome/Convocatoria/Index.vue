@@ -1,6 +1,7 @@
 <template>
-  <Dashboard>
-    <h1>TODAS LAS CONVOCATORIAS</h1>
+  <div v-if="logos.length > 0">
+    <LayoutWelcome :logo="logos[logos.length - 1]">
+          <h1>TODAS LAS CONVOCATORIAS</h1>
     <div v-for="(convocatoriaGroup, title) in listas" :key="title">
       <h2>{{ title }}</h2>
       <div class="table-container">
@@ -25,14 +26,22 @@
         </table>
       </div>
     </div>
-  </Dashboard>
+    <footer >
+      <div v-if="footers.length>0">
+      <FooterWelcome :footer="footers[footers.length -1]"/>
+    </div>
+    </footer>
+  </LayoutWelcome>
+  </div>
 </template>
 
 <script setup>
 import { ref, defineProps } from "vue";
-import Dashboard from "@/Layouts/LayoutWelcome.vue";
+import LayoutWelcome from "@/Layouts/LayoutWelcome.vue";
+import FooterWelcome from "@/Pages/Welcome/Components/FooterWelcome.vue";
 
-const { listas } = defineProps(["listas"]);
+
+const { listas, logos,footers } = defineProps(["listas","logos","footers"]);
 </script>
 
 <style scoped>

@@ -1,10 +1,16 @@
 <script setup>
 import LayoutWelcome from "@/Layouts/LayoutWelcome.vue";
+import FooterWelcome from "@/Pages/Welcome/Components/FooterWelcome.vue";
+
+const { logos,footers } = defineProps(["logos","footers"]);
+const mindis="/imagenes/mindis.png"
+
 </script>
 
 <template>
-  <LayoutWelcome>
-    <div>
+  <div v-if="logos.length > 0">
+    <LayoutWelcome :logo="logos[logos.length - 1]">
+          <div>
       <h1 class="title">DEMOGRAFIA</h1>
       <div class="organigrama-content">
         <div class="organigrama">
@@ -15,16 +21,30 @@ import LayoutWelcome from "@/Layouts/LayoutWelcome.vue";
             />
           </div>
           <div class="description">
-            <p>El Distrito peruano de Nuevo Occoro es uno de los diecinueve distritos de la Provincia de Huancavelica, ubicada en el Departamento de Huancavelica, bajo la administración del Gobierno Regional de Huancavelica, en la zona de los andes centrales del Perú. Limita por el norte con el Distrito de Laria; por el oeste con los distritos de Manta y Acobambilla; por el este con el Distrito de Huando; y, por el sur con los distritos de Palca y Ascensión.</p>
+            <p>
+              El Distrito peruano de Nuevo Occoro es uno de los diecinueve
+              distritos de la Provincia de Huancavelica, ubicada en el
+              Departamento de Huancavelica, bajo la administración del Gobierno
+              Regional de Huancavelica, en la zona de los andes centrales del
+              Perú. Limita por el norte con el Distrito de Laria; por el oeste
+              con los distritos de Manta y Acobambilla; por el este con el
+              Distrito de Huando; y, por el sur con los distritos de Palca y
+              Ascensión.
+            </p>
 
             <h4>Superficie: 211.56 km²</h4>
             <h4>Altitud: 3825 m s. n. m.</h4>
-
           </div>
         </div>
       </div>
     </div>
+    <footer >
+      <div v-if="footers.length>0">
+      <FooterWelcome :footer="footers[footers.length -1]"/>
+    </div>
+    </footer>
   </LayoutWelcome>
+  </div>
 </template>
 
 <style scoped>
@@ -33,8 +53,8 @@ import LayoutWelcome from "@/Layouts/LayoutWelcome.vue";
   text-align: center;
   background: linear-gradient(
     to right,
-    rgba(128, 120, 120, 0.5),
-    rgba(117, 59, 59, 0.5)
+    rgba(28, 187, 166, 0.986),
+    rgba(185, 185, 185, 0.5)
   );
   /* Degradado de color */
   padding: 20px;

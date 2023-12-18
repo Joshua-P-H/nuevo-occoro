@@ -2,11 +2,8 @@
   <div class="content-footer">
     <div class="logo-footer">
       <div class="logo">
-        <img
-          src="http://127.0.0.1:8001/imagesprensa/NUEVO_OCC1.png"
-          alt="imagen"
-        />
-        <p>Municipalidad Distrital de Nuevo Occoro, Gestión Edil 2023 – 2026</p>
+        <img :src="footer.image_footer" alt="" width="100%" :style="{ maxWidth: '160px' }">
+        <p>{{footer.gestion_footer}}</p>
       </div>
       <div class="iconos">
         <a href="#" class="icon-link"><i class="bx bxl-facebook"></i></a>
@@ -19,26 +16,40 @@
       <li><a href="#">RENIEC</a></li>
     </div>
     <div class="contactanos">
-      <li><a href="#">###</a></li>
-      <li><a href="#">##</a></li>
-      <li><a href="#">##</a></li>
+      <h1 class="">Horario de atención</h1>
+      <h4>Lunes a Viernes</h4>
+      <p>Mañanas: 08:00 a.m - 1:00 p.m</p>
+      <p>Tardes: 2:30 a.m - 5:30 p.m</p>
+
+    </div>
+    
+    <div class="contactanos">
+      <h1 class="">Contactanos</h1>
+
+      <li><a :href="'tel:'+footer.telefono_footer">{{'Llamar: '+footer.telefono_footer}}</a></li>
     </div>
   </div>
 
-  <div class="contenido-adicional">Todos los derechos reservados</div>
+  <div class="contenido-adicional">{{'©'+footer.copy_footer}}</div>
 </template>
+<script setup>
+const props = defineProps(['footer']);
 
+</script>
 <style scoped>
 .content-footer {
   display: flex;
   justify-content: space-between;
   padding: 10px;
+  background-color: rgb(39, 37, 37);
+  color: #ffffff;
 }
   .logo img {
     width: 100%; /* Establece el ancho de la imagen al 100% del contenedor (.logo) */
-    max-width: 280px; /* Establece el ancho máximo para la imagen */
+    max-width: 200px; /* Establece el ancho máximo para la imagen */
     height: auto; /* Permite que la altura se ajuste automáticamente según el ancho */
     display: block; /* Elimina el espacio adicional debajo de la imagen */
+    border-radius: 20px;
   }
 
 .iconos {
@@ -81,6 +92,7 @@
 }
 h1 {
   font-size: 30px;
+  text-align: center;
 }
 
 .contactanos li {
@@ -100,6 +112,7 @@ h1 {
 
 .contenido-adicional {
   background-color: black;
+  color: #ffffff;
 }
 
 @media (max-width: 768px) {

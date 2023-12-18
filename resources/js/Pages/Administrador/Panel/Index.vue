@@ -1,13 +1,12 @@
 <script setup>
-import { ref } from 'vue';
+import { ref } from "vue";
 
-import LayoutOccoro from '@/Layouts/LayoutOccoro.vue';
-import CarouselUno from '@/Components/Carousel/CarouselUno.vue'
+import LayoutOccoro from "@/Layouts/LayoutOccoro.vue";
+import CarouselUno from "@/Components/Carousel/CarouselUno.vue";
 const isChecked = ref(true);
 </script>
 <template>
-    <LayoutOccoro>
-        <CarouselUno v-model="isChecked">....</CarouselUno>
-
-    </LayoutOccoro>
+  <LayoutOccoro>
+    <h3>En proceso de implementación</h3>
+  </LayoutOccoro>
 </template>

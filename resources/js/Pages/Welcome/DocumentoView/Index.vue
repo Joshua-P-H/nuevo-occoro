@@ -1,6 +1,7 @@
 <template>
-  <LayoutWelcome>
-    <h1 style="font-size: 30px; text-align: center;">TODOS LOS DOCUEMENTOS</h1>
+  <div v-if="logos.length > 0">
+    <LayoutWelcome :logo="logos[logos.length - 1]">
+          <h1 class="title">TODOS LOS DOCUEMENTOS</h1>
 
     <div class="contenedor-flex">
       <div class="contenedor-tabla">
@@ -108,10 +109,28 @@
         </table>
       </div>
     </div>
+    <footer >
+      <div v-if="footers.length>0">
+      <FooterWelcome :footer="footers[footers.length -1]"/>
+    </div>
+    </footer>
   </LayoutWelcome>
+  </div>
 </template>
 
 <style scoped>
+.title {
+  font-size: 30px;
+  text-align: center;
+  background: linear-gradient(
+    to right,
+    rgba(28, 187, 166, 0.986),
+    rgba(185, 185, 185, 0.5)
+  );
+  padding: 20px;
+  margin: 10px 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 .contenedor-flex {
   display: flex;
   justify-content: space-between;
@@ -150,7 +169,7 @@ td {
 }
 
 th {
-  background-color: #990c0c;
+  background-color: #99400c;
   color: white; /* Añade color de texto para mayor contraste */
   border-radius: 20px; /* Añade el border-radius */
 }
@@ -183,7 +202,9 @@ i {
 <script setup>
 import LayoutWelcome from "@/Layouts/LayoutWelcome.vue";
 import { Link } from "@inertiajs/vue3";
-const { documentos } = defineProps(["documentos"]);
+import FooterWelcome from "@/Pages/Welcome/Components/FooterWelcome.vue";
+
+const { documentos, logos,footers } = defineProps(["documentos","logos","footers"]);
 
 const filteredDocuments = (keyword) => {
   const lowerCaseKeyword = keyword.toLowerCase();

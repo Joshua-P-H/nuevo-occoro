@@ -48,7 +48,7 @@ body.theme-dark .navbar {
 
 /* Estilos adicionales para el modo claro */
 body.theme-light .navbar {
-    background-color: rgb(162, 163, 211);
+    background-color: rgb(162, 199, 211);
     /* Cambiar el color del navbar a verde en modo claro */
 }
 
@@ -120,10 +120,10 @@ body.theme-dark input {
 
 /*DISEÑO DEL WELCOME*/
 body.theme-light nav {
-    background-color: rgb(128, 128, 206);
+    background-color: rgb(0, 0, 0);
 
     .nav-list {
-        background-color: rgb(128, 128, 206);
+        background-color: rgb(0, 0, 0);
     }
 }
 

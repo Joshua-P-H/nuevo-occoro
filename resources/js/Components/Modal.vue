@@ -27,7 +27,7 @@ const close = () => {
     <div class="modal" :style="{ display: show ? 'flex' : 'none' }" @click="close">
         <div class="modal-content" :style="{ maxWidth: maxWidth }" @click.stop>
             <div class="modal-body">
-                <slot name="content" />
+                <slot />
             </div>
         </div>
     </div>

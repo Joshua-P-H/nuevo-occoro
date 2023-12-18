@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Prensa;
+use App\Models\Logo;
+use App\Models\Footer;
 use App\Models\Documento;
 
 use Illuminate\Support\Facades\Redirect;
@@ -17,6 +19,9 @@ class DocumentoViewController extends Controller
     {
         return Inertia::render("Welcome/DocumentoView/Index",[
             'documentos' => Documento::all(),
+            'logos'=>Logo::all(),
+            'footers'=>Footer::all(),
+
 
         ]);
     }

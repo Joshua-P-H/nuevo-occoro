@@ -6,7 +6,7 @@
       @click="openCreateModal"
       style="cursor: pointer; margin-bottom: 10px;"
     >
-      Agregar
+      Agregar documentos
     </button>
 
     <table class="custom-table">
@@ -15,6 +15,7 @@
           <th>ID</th>
           <th>Nombre</th>
           <th>PDF</th>
+          <th>Imagen</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -26,6 +27,10 @@
             <button @click="mostrarPDF(documento.pdf_documento)">
               Ver PDF
             </button>
+          </td>
+          <td>
+            <img :src="documento.image_documento" alt="Imagen" style="max-width: 100px; max-height: 100px;">
+
           </td>
           <td>
             <select @change="handleOption(documento, $event.target.value)">
@@ -82,8 +87,8 @@
 <script setup>
 import { ref } from "vue";
 import Dashboard from "@/Layouts/LayoutOccoro.vue";
-import Modal from "@/Pages/Administrador/Componentes/Modal.vue";
-import EditModal from "@/Pages/Administrador/Componentes/EditModal.vue";
+import Modal from "@/Pages/Administrador/Documento/Componentes/AgregarModal.vue";
+import EditModal from "@/Pages/Administrador/Documento/Componentes/EditModal.vue";
 import DialogModal from "@/Components/DialogModal.vue";
 import { router, Link } from "@inertiajs/vue3";
 
@@ -176,7 +181,7 @@ function resetDropdown() {
 }
 
 .custom-table th {
-  background-color: rgb(95, 151, 151);
+  background-color: rgb(9, 185, 185);
   color: black;
   font-weight: bold;
 }
@@ -207,7 +212,7 @@ select {
   padding: 8px;
   border: none;
   border-radius: 4px;
-  background-color: #e00909;
+  background-color: #09a3e0;
   color: #fff;
   appearance: none;
   /* Quita el estilo nativo del sistema */

@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use App\Models\Documento;
 use App\Models\Prensa;
+use App\Models\Carrousel;
+use App\Models\Logo;
+use App\Models\Footer;
+
+
 
 
 
@@ -16,6 +21,8 @@ use Inertia\Inertia;
 class WelcomeController extends Controller
 {
     public function index(){
+      //$footers=Footer::latest()->first();
+
         return Inertia::render('Welcome', [
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
@@ -23,6 +30,14 @@ class WelcomeController extends Controller
             'phpVersion' => PHP_VERSION,
             'documentos' => Documento::all(),
             'prensas' => Prensa::all(),
+            //'carrousels'=>Carrousel::all(),
+            'carrousels' => Carrousel::latest()->take(3)->get(),
+            'logos'=>Logo::all(),
+            //'logos'=>Logo::latest()->first(),
+            'footers'=>Footer::all(),
+
+
+
 
 
         ]);

@@ -1,33 +1,63 @@
 <template>
   <div class="carousel-card">
     <div class="column">
-        <div class="date-container">
-          <div class="date">{{ formatDate(prensa.created_at) }}</div>
-        </div>
-        <div class="content-card">
-          <div class="card">
-            <div class="image-container">
-              <img :src="prensa.image_prensa" alt="Imagen de prensa" class="card-image"/>
-            </div>
-            <Link :href="'/show/' + prensa.id" class="title">{{ prensa.title_prensa }}</Link>
+      <div class="date-container">
+        <div class="date">{{ formatDate(prensa.created_at) }}</div>
+      </div>
+      <div class="content-card">
+        <div class="card" @click="openModal">
+          <div class="image-container">
+            <img
+              :src="prensa.image_prensa"
+              alt="Imagen de prensa"
+              class="card-image"
+            />
+          </div>
+          <div class="title">
+            <button @click="openModal">{{ prensa.title_prensa }}</button>
           </div>
         </div>
+      </div>
     </div>
+
+    <!-- Modal -->
+    <MyModal :show="isModalOpen" @close="closeModal" class="modal">
+      <div class="conten-modal">
+        <h2 class="modal-title">{{ prensa.title_prensa }}</h2>
+        <img :src="prensa.image_prensa" alt="">
+        <p class="noticia1">{{ prensa.content_prensa }}</p>
+        <Link href="/noticias" class="noticia-link">Mas noticia</Link>
+
+      </div>
+    </MyModal>
   </div>
 </template>
 
 <script setup>
-import { Link } from '@inertiajs/vue3';
-import { ref, defineProps } from 'vue';
+import { Link } from "@inertiajs/vue3";
+import MyModal from "@/Components/Modal.vue";
 
-const props = defineProps(['prensa']);
+import { ref, defineProps } from "vue";
+
+const props = defineProps(["prensa"]);
+const isModalOpen = ref(false);
+
+const openModal = () => {
+  isModalOpen.value = true;
+};
+
+const closeModal = () => {
+  isModalOpen.value = false;
+};
 
 const formatDate = (date) => {
-  const formattedDate = new Date(date).toLocaleDateString('es-ES', { month: 'long', day: '2-digit' });
-  return formattedDate.replace(/^(\d)$/, '0$1');
+  const formattedDate = new Date(date).toLocaleDateString("es-ES", {
+    month: "long",
+    day: "2-digit",
+  });
+  return formattedDate.replace(/^(\d)$/, "0$1");
 };
 </script>
-
 
 <style scoped>
 .carousel-card {
@@ -47,7 +77,7 @@ const formatDate = (date) => {
 .content-card {
   position: relative;
   padding: 15px;
-  background-color: rgb(56, 52, 52);
+  background-color: rgb(95, 129, 161);
   border-radius: 0 0 10px 10px; /* Bordes redondeados en las dos esquinas inferiores */
 }
 
@@ -99,5 +129,50 @@ img {
     height: 100%;
     border-radius: 10px;
   }
+}
+.modal {
+  /* Estilos para el fondo oscuro detrás del modal */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semi-transparente */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  /* Estilos para el contenido del modal */
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+  /* Estilos para el botón de cerrar */
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.modal {
+  z-index: 9999;
+}
+.modal-title{
+  text-align: center;
+  font-size: 30px;
+}
+.noticia1{
+  padding: 10px;
+}
+.noticia-link{
+  background-color: rgb(2, 122, 202);
+  padding: 10px;
+  border-radius: 10px;
 }
 </style>

@@ -9,11 +9,18 @@ use App\Http\Controllers\NoticiaController;
 use App\Http\Controllers\DocumentoViewController;
 use App\Http\Controllers\ConvocatoriaController;
 use App\Http\Controllers\ConvocatoriaFechaController;
+use App\Http\Controllers\CarrouselController;
+use App\Http\Controllers\AlcaldeController;
+use App\Http\Controllers\LogoController;
+use App\Http\Controllers\FooterController;
 
 use App\Http\Controllers\MisionVisionController;
+
 use App\Http\Controllers\OrganigramaController;
 use App\Http\Controllers\DemografiaController;
 use App\Http\Controllers\HistoriaController;
+use App\Http\Controllers\LayoutController;
+
 
 
 
@@ -50,13 +57,20 @@ Route::get('/show/{id}', [WelcomeController::class, 'show']);
 
 Route::resource('noticias', NoticiaController::class);
 Route::resource('docview', DocumentoViewController::class);
-Route::resource('misionvision', MisionVisionController::class);
+//Route::resource('misionvision', MisionVisionController::class);
 Route::resource('organigrama', OrganigramaController::class);
 Route::resource('demografia', DemografiaController::class);
 Route::resource('historia', HistoriaController::class);
+//Route::get('/viewlogo', [LogoController::class,'logoview']);
+Route::get('/mision-vision', [MisionVisionController::class, 'misisionvision']);
+
+
+
 
 
 Route::get('viewsconvocatorias', [ConvocatoriaController::class, 'viewconvocatoria']);
+Route::get('/info-alcalde', [AlcaldeController::class, 'informacion']);
+
 
 
 
@@ -73,11 +87,24 @@ Route::middleware([
     Route::resource('documentos', DocumentoController::class);
     Route::resource('users', UserController::class);
     Route::resource('prensas', PrensaController::class);
+    Route::resource('carrousel', CarrouselController::class);
+    Route::resource('alcalde', AlcaldeController::class,);
+    Route::resource('logos', LogoController::class,);
+    Route::resource('footers', FooterController::class,);
+    Route::resource('paneles', PanelController::class,);
+    Route::resource('misionvision', MisionVisionController::class,);
 
-    Route::resource('convocatorias', ConvocatoriaController::class);
 
 
-    Route::resource('fechas', ConvocatoriaFechaController::class);
+
+
+
+
+
+    //Route::resource('convocatorias', ConvocatoriaController::class);
+
+
+    //Route::resource('fechas', ConvocatoriaFechaController::class);
     //Route::get('/fechas', [ConvocatoriaFechaController::class, 'checkDateExists']);
 
     //Route::post('fechas', [ConvocatoriaFechaController::class,'store']);
